@@ -59,11 +59,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('What is your choice?');
-        let result = playRound(playerSelection, getComputerChoice());
-        console.log(result);
-    }
+    let playerSelection = prompt('What is your choice?');
+    let result = playRound(playerSelection, getComputerChoice());
+    console.log(result);
 }
 
 game();
