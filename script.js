@@ -44,8 +44,38 @@ function decideWinnerOfRound(playerSelection, computerSelection) {
 }
 
 function showResult(result) {
-    const resultBox = document.querySelector(".results");
+    const resultBox = document.querySelector("div.results");
     resultBox.textContent = result;
+}
+
+function sumScore(result) {
+    const userScoreNode = document.querySelector("span.user-score");
+    const machineScoreNode = document.querySelector("span.computer-score");
+
+    if (result.includes('Win')) {
+        let actualUserScore = Number(userScoreNode.textContent);
+        userScoreNode.textContent = actualUserScore + 1;
+
+    } else if (result.includes('Lose')) {
+        let actualMachineScore = Number(machineScoreNode.textContent);
+        machineScoreNode.textContent = actualMachineScore + 1;
+
+    } 
+
+}
+
+function decideWinner() {
+    const userScoreNode = document.querySelector("span.user-score");
+    const machineScoreNode = document.querySelector("span.computer-score");
+
+    let userScore = Number(userScoreNode.textContent);
+    let machineScore = Number(machineScoreNode.textContent);
+
+    if (userScore === 5) {
+        alert("You're the winner!");
+    } else if (machineScore === 5) {
+        alert("You lose, the machine is the winner")
+    }
 }
 
 function playRound(event) {
@@ -53,8 +83,9 @@ function playRound(event) {
     const computerSelection = getComputerChoice();
 
     let result = decideWinnerOfRound(playerSelection, computerSelection);
-
     showResult(result);
+    sumScore(result);
+    decideWinner();
 }
 
 
